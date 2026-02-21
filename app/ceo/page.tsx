@@ -31,7 +31,9 @@ const CEOMessage: React.FC = () => {
                                 &quot;Our journey in the global sourcing world has taught us that accuracy is not just a goal — it&apos;s a responsibility. Every report we sign off on represents a commitment to the growth and stability of our clients&apos; businesses.&quot;
                             </p>
                             <p className="font-bold text-navy not-italic">
-                                &quot;If you work with us, you will grow. We take the burden of quality off your shoulders so you can focus on building your brand and capturing your market.&quot;
+                                &quot;If we work together, we can achieve sustainable growth. We take full responsibility for maintaining and managing product quality, so you don’t have to worry about operational challenges.
+                                This allows you to focus entirely on strengthening your brand, expanding your market presence, and capturing new opportunities.
+                                We believe in building long-term partnerships based on trust, quality, and mutual success.&quot;
                             </p>
                         </div>
 

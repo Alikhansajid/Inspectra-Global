@@ -1,10 +1,60 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageSquare, Globe, Clock, CheckCircle, ArrowRight, BadgeCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Phone, MapPin, Send, MessageSquare, Globe, Clock, CheckCircle, ArrowRight, BadgeCheck, Loader2 } from 'lucide-react';
 
 const Contact: React.FC = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        company: '',
+        email: '',
+        requirement: 'Apparel Buying & Sourcing',
+        message: ''
+    });
+
+    const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('submitting');
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/info@inspectraglobal.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    _subject: `New Inquiry: ${formData.requirement} from ${formData.company}`
+                })
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({
+                    name: '',
+                    company: '',
+                    email: '',
+                    requirement: 'Apparel Buying & Sourcing',
+                    message: ''
+                });
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            setStatus('error');
+        }
+    };
+
     return (
         <div className="pt-20 overflow-hidden">
             {/* Refactored Hero */}
@@ -119,41 +169,123 @@ const Contact: React.FC = () => {
                                 </div>
 
                                 <h3 className="text-4xl font-bold text-navy mb-12 tracking-tighter">Strategic Partnership Inquiry</h3>
-                                <form className="space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div className="space-y-3">
-                                            <label className="text-sm font-bold text-slate-700 uppercase tracking-widest px-1">Full Name</label>
-                                            <input type="text" placeholder="e.g. John Doe" className="w-full p-6 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all shadow-sm" />
-                                        </div>
-                                        <div className="space-y-3">
-                                            <label className="text-sm font-bold text-slate-700 uppercase tracking-widest px-1">Company Name</label>
-                                            <input type="text" placeholder="Your Global Brand" className="w-full p-6 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all shadow-sm" />
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div className="space-y-3">
-                                            <label className="text-sm font-bold text-slate-700 uppercase tracking-widest px-1">Professional Email</label>
-                                            <input type="email" placeholder="john@example.com" className="w-full p-6 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all shadow-sm" />
-                                        </div>
-                                        <div className="space-y-3">
-                                            <label className="text-sm font-bold text-slate-700 uppercase tracking-widest px-1">Primary Requirement</label>
-                                            <select className="w-full p-6 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all shadow-sm appearance-none">
-                                                <option>Apparel Buying & Sourcing</option>
-                                                <option>3rd Party QA Inspection (AQL)</option>
-                                                <option>Ethical & Compliance Auditing</option>
-                                                <option>Fabric Lab Testing</option>
-                                                <option>Merchandising Support</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="space-y-3">
-                                        <label className="text-sm font-bold text-slate-700 uppercase tracking-widest px-1">Project Detailed Description</label>
-                                        <textarea rows={6} placeholder="Describe your product categories, factory locations, and required timeline..." className="w-full p-6 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all shadow-sm"></textarea>
-                                    </div>
-                                    <button className="w-full bg-teal-500 text-navy py-6 rounded-2xl font-black text-xl hover:bg-teal-400 transition-all flex items-center justify-center gap-4 shadow-3xl transform hover:translate-y-[-5px]">
-                                        SUBMIT INQUIRY <Send size={24} />
-                                    </button>
-                                </form>
+
+                                <AnimatePresence mode="wait">
+                                    {status === 'success' ? (
+                                        <motion.div
+                                            key="success"
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.9 }}
+                                            className="text-center py-20"
+                                        >
+                                            <div className="w-24 h-24 bg-teal-500 text-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
+                                                <CheckCircle size={48} />
+                                            </div>
+                                            <h4 className="text-4xl font-bold text-navy mb-4 tracking-tighter">Inquiry Received</h4>
+                                            <p className="text-xl text-slate-600 font-light mb-10">Our global team will reach out to you within 12-24 hours.</p>
+                                            <button
+                                                onClick={() => setStatus('idle')}
+                                                className="text-teal-600 font-bold hover:text-teal-700 transition-colors uppercase tracking-widest text-sm"
+                                            >
+                                                Send Another Inquiry
+                                            </button>
+                                        </motion.div>
+                                    ) : (
+                                        <motion.form
+                                            key="form"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            className="space-y-8 relative z-10"
+                                            onSubmit={handleSubmit}
+                                        >
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                                <div className="space-y-3">
+                                                    <label className="text-sm font-bold text-slate-700 uppercase tracking-widest px-1">Full Name</label>
+                                                    <input
+                                                        type="text"
+                                                        name="name"
+                                                        required
+                                                        value={formData.name}
+                                                        onChange={handleChange}
+                                                        placeholder="e.g. John Doe"
+                                                        className="w-full p-6 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all shadow-sm"
+                                                    />
+                                                </div>
+                                                <div className="space-y-3">
+                                                    <label className="text-sm font-bold text-slate-700 uppercase tracking-widest px-1">Company Name</label>
+                                                    <input
+                                                        type="text"
+                                                        name="company"
+                                                        required
+                                                        value={formData.company}
+                                                        onChange={handleChange}
+                                                        placeholder="Your Global Brand"
+                                                        className="w-full p-6 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all shadow-sm"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                                <div className="space-y-3">
+                                                    <label className="text-sm font-bold text-slate-700 uppercase tracking-widest px-1">Professional Email</label>
+                                                    <input
+                                                        type="email"
+                                                        name="email"
+                                                        required
+                                                        value={formData.email}
+                                                        onChange={handleChange}
+                                                        placeholder="john@example.com"
+                                                        className="w-full p-6 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all shadow-sm"
+                                                    />
+                                                </div>
+                                                <div className="space-y-3">
+                                                    <label className="text-sm font-bold text-slate-700 uppercase tracking-widest px-1">Primary Requirement</label>
+                                                    <select
+                                                        name="requirement"
+                                                        value={formData.requirement}
+                                                        onChange={handleChange}
+                                                        className="w-full p-6 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all shadow-sm appearance-none"
+                                                    >
+                                                        <option>Apparel Buying & Sourcing</option>
+                                                        <option>3rd Party QA Inspection (AQL)</option>
+                                                        <option>Ethical & Compliance Auditing</option>
+                                                        <option>Fabric Lab Testing</option>
+                                                        <option>Merchandising Support</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="space-y-3">
+                                                <label className="text-sm font-bold text-slate-700 uppercase tracking-widest px-1">Project Detailed Description</label>
+                                                <textarea
+                                                    name="message"
+                                                    rows={6}
+                                                    required
+                                                    value={formData.message}
+                                                    onChange={handleChange}
+                                                    placeholder="Describe your product categories, factory locations, and required timeline..."
+                                                    className="w-full p-6 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all shadow-sm"
+                                                ></textarea>
+                                            </div>
+
+                                            {status === 'error' && (
+                                                <p className="text-red-500 font-bold text-center">Something went wrong. Please try again later or contact us directly via WhatsApp.</p>
+                                            )}
+
+                                            <button
+                                                type="submit"
+                                                disabled={status === 'submitting'}
+                                                className="w-full bg-teal-500 text-navy py-6 rounded-2xl font-black text-xl hover:bg-teal-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-4 shadow-3xl transform hover:translate-y-[-5px]"
+                                            >
+                                                {status === 'submitting' ? (
+                                                    <>SENDING... <Loader2 size={24} className="animate-spin" /></>
+                                                ) : (
+                                                    <>SUBMIT INQUIRY <Send size={24} /></>
+                                                )}
+                                            </button>
+                                        </motion.form>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         </motion.div>
                     </div>

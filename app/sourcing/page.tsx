@@ -92,10 +92,10 @@ const Sourcing: React.FC = () => {
                             className="lg:w-1/2"
                         >
                             <div className="grid grid-cols-2 gap-6 relative">
-                                <img src={TEXTILE_IMAGES.weaving} className="rounded-3xl shadow-2xl h-80 w-full object-cover transform translate-y-12" alt="Fabric Development" />
-                                <img src={TEXTILE_IMAGES.fabricRolls} className="rounded-3xl shadow-2xl h-80 w-full object-cover" alt="Material" />
-                                <img src={TEXTILE_IMAGES.sewing} className="rounded-3xl shadow-2xl h-80 w-full object-cover transform translate-y-12" alt="Garment Mfg" />
-                                <img src={TEXTILE_IMAGES.packing} className="rounded-3xl shadow-2xl h-80 w-full object-cover" alt="Finishing" />
+                                <img src="https://images.pexels.com/photos/4620608/pexels-photo-4620608.jpeg" className="rounded-3xl shadow-2xl h-80 w-full object-cover transform translate-y-12" alt="Fabric Development" />
+                                <img src="https://images.pexels.com/photos/236748/pexels-photo-236748.jpeg" className="rounded-3xl shadow-2xl h-80 w-full object-cover" alt="Material" />
+                                <img src="https://images.pexels.com/photos/783590/pexels-photo-783590.jpeg" className="rounded-3xl shadow-2xl h-80 w-full object-cover transform translate-y-12" alt="Garment Mfg" />
+                                <img src="https://images.pexels.com/photos/4498136/pexels-photo-4498136.jpeg" className="rounded-3xl shadow-2xl h-80 w-full object-cover" alt="Finishing" />
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-full shadow-3xl">
                                     <Zap className="text-teal-500 w-16 h-16 animate-bounce" />
                                 </div>
@@ -125,38 +125,34 @@ const Sourcing: React.FC = () => {
                             {
                                 title: "Order Placement & Strategic Matching",
                                 desc: "Finding the right supplier is an art form we have perfected. It is not just about who has the capacity; it is about who has the specific technical capability for your product class. We analyze quality levels, production costs, delivery timelines, and potential machinery changeover times. We assess the factory's distance to key component suppliers to minimize delays. Whether it is utilizing specialized wet-processing capabilities in Faisalabad or high-tech synthetic production in Sheikhupura, we match your order to the facility that gives you a competitive advantage. When you are ready to move, we execute immediately, securing line space before your competitors do.",
-                                image: "https://images.unsplash.com/photo-1556905055-8f358a7a4bb4?q=80&w=1200" // Sewing/Meeting context
+                                image: "https://images.pexels.com/photos/5439471/pexels-photo-5439471.jpeg" // Sewing/Meeting context
                             },
                             {
                                 title: "Design Development & Proto-Sampling",
                                 desc: "You don’t need to see the failures; you only need to see the perfect sample. We protect your brand standards by testing and correcting prototypes before they ever reach your headquarters. Our on-site technicians review the first 'Proto' samples, 'Fit' samples, and 'Size Sets' right at the factory floor. We check pattern grading, shrinkage, and construction integrity. By the time you receive a sample for approval, it has already passed our internal rigorous checks, saving you weeks of back-and-forth courier time. Your decisions drive the schedule; we ensure the vehicle is ready to race.",
-                                image: "https://images.unsplash.com/photo-1558384260-25bc37402638?q=80&w=1200" // Design/Pattern making
+                                image: "https://images.pexels.com/photos/9849320/pexels-photo-9849320.jpeg" // Design/Pattern making
                             },
                             {
                                 title: "Graphic Art & Creative Pattern Making",
                                 desc: "At Inspectra Global, we do not just follow instructions; we create. Our in-house creative team works as an extension of your design department. Whether you need complex screen prints, digital sublimation, puff printing, or intricate embroidery for hoodies and T-shirts, we handle the technical artwork separation. We create 'out of the box' pattern designs that optimize fabric consumption (marker efficiency) while delivering the aesthetic impact you desire. You provide the vision; we provide the technical execution to put it on fabric.",
-                                image: "https://images.unsplash.com/photo-1543269664-56d93c1019a6?q=80&w=1200" // Clothes/Design
+                                image: "https://images.pexels.com/photos/2294342/pexels-photo-2294342.jpeg" // Clothes/Design
                             },
                             {
                                 title: "Quality Control & The Inspection Journey",
                                 desc: "Quality is not a static final step; it is a continuous journey. Inspectra Global's QC experts are stationed permanently in the manufacturing hubs. We do not just visit the main factory; we audit the subcontractors, the dye houses, the print shops, and the washing units. We implement the 'Traffic Light System' on production lines to stop defects instantly. Finally, our rigorous Final Random Inspection (FRI) follows your specified AQL standard (usually 1.5/4.0 or 2.5/4.0). We are rarely surprised by the results because we have been watching the product being built stitch by stitch.",
-                                image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=1200" // Inspection
+                                image: "https://images.pexels.com/photos/35383622/pexels-photo-35383622.jpeg" // Inspection
                             },
                             {
                                 title: "Logistics, Documentation & Monitoring",
                                 desc: "Production is only half the battle; getting it to your warehouse is the other. Inspectra Global's logistics team ensures your shipment doesn't get stuck in bureaucratic red tape. We actively manage the consolidation of goods from multiple factories to maximize container space and reduce freight costs. We scrutinize all export documentation—Bills of Lading, Commercial Invoices, Packing Lists—to ensure 100% compliance with your country's customs regulations. We monitor the vessel schedules and act fast if a booking needs to be rolled or expedited.",
-                                image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200" // Shipping
+                                image: "https://images.pexels.com/photos/2881632/pexels-photo-2881632.jpeg" // Shipping
                             },
                             {
                                 title: "Post Shipment Support & Commercial Analysis",
                                 desc: "Our job isn't done when the container leaves the port. We believe in continuous improvement. After shipment, we sit down to analyze the entire process: what went right, what had hiccups, and how we can improve for the next season. We also help you analyze the commercial success of the product. Did the fabric hand-feel contribute to better sales? Did the packaging enhance the unboxing experience? We use this data to refine the specifications for your next order, ensuring you sell more and return less.",
                                 image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200" // Meeting/Review
                             },
-                            {
-                                title: "Online Status Checking System",
-                                desc: "Transparency is our currency. Your order is never a 'black box'. Inspectra Global's proprietary tracking system is updated daily by our field staff. You can log in and see exactly where your production stands—cut pieces, sewn output, washing status, packing count. This real-time visibility allows us to spot potential bottlenecks weeks in advance. If a fabric delivery is late, we know immediately and adjust the production lines accordingly. We second-guess everything so you don't have to.",
-                                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200" // Analytics/Dashboard
-                            }
+
                         ].map((step, i) => (
                             <motion.div
                                 key={i}
@@ -221,7 +217,7 @@ const Sourcing: React.FC = () => {
                             className="lg:w-1/2"
                         >
                             <div className="relative p-4 bg-white/5 rounded-[4rem] border border-white/10">
-                                <img src={TEXTILE_IMAGES.factory_ext} className="rounded-[3rem] shadow-2xl h-[500px] w-full object-cover" alt="Global Hubs" />
+                                <img src="https://images.pexels.com/photos/3769138/pexels-photo-3769138.jpeg" className="rounded-[3rem] shadow-2xl h-[500px] w-full object-cover" alt="Global Hubs" />
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-600 p-6 rounded-full shadow-3xl">
                                     <Globe2 size={40} className="text-white animate-spin-slow" />
                                 </div>

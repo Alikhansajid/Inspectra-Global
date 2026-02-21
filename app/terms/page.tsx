@@ -188,7 +188,7 @@ const Terms: React.FC = () => {
                                 <AlertTriangle className="w-5 h-5 text-orange-500" /> Combined Sampling Risk
                             </h3>
                             <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                                Bureau Veritas (Inspectra Global) advises all clients of the risks associated with "Combined Sampling" where several different product styles are combined to make a single lot size. This represents an increased level of risk as statistical rules are compromised.
+                                Inspectra Global  advises all clients of the risks associated with "Combined Sampling" where several different product styles are combined to make a single lot size. This represents an increased level of risk as statistical rules are compromised.
                             </p>
                             <p className="text-slate-500 text-xs italic">
                                 We disclaim any liability if decisions are made concerning the acceptance, payment authorization, or shipment of the inspected goods based upon Combined Sampling.

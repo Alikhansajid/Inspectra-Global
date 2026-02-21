@@ -172,7 +172,7 @@ const FabricInspection: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex flex-col md:flex-row gap-16 items-center">
                         <div className="md:w-1/2">
-                            <img src={TEXTILE_IMAGES.fabricRolls} alt="Fabric Rolls" className="rounded-[3rem] shadow-2xl h-[500px] w-full object-cover" />
+                            <img src="https://images.pexels.com/photos/4620608/pexels-photo-4620608.jpeg" alt="Fabric Rolls" className="rounded-[3rem] shadow-2xl h-[500px] w-full object-cover" />
                         </div>
                         <div className="md:w-1/2">
                             <h2 className="text-4xl font-bold text-navy mb-8">Fabrics We Inspect</h2>
